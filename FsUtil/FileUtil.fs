@@ -32,14 +32,16 @@
       enumfile path |> List.filter filter
     let parentDir fullname=
       Directory.GetParent(fullname)
-    //(string*IplImage)ってやれば新しく作ることもないし、ファイル名も出せるし
+	
+    ///<summary>
+    ///フォルダ内で2つのファイルを用いた射影変換を行う
+    ///<summary>
     let compareInSameFolder fullname f=
       let par=
         let p=parentDir fullname
         p.FullName |>enumfile
       Seq.fromTop f par
-        //再帰にしようか、こうかい関数にするにはアルゴリズムかえるの？
-        //上のからpop
+
     let openFile path=
       File.Open(path,FileMode.Open)
     ///<summary>
@@ -88,7 +90,7 @@
       s |>List.append(s |> List.map(fun (u:string)->u.ToUpper()))
     let ImageTypes=
       let ty=["jpg";"png";"gif";"jpeg";"JPG";"PNG";"GIF";"JPEG";]
-      ty //なぜかC#のCapitaliseが探せない |> List.append (List.map Libs.CsUtil. ty)
+      ty
     let MovieTypes=
       ["avi";"mpg";"mp4";"mkv";]|>withUpper
     let DocumentTypes=

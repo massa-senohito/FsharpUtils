@@ -61,10 +61,6 @@ namespace Lib
       System.Console.WriteLine(s.ToString())
       System.Console.ReadLine()
 
-    //上のを一般化させたら
-    //    let is a b f=
-    //      f a b  
-
   ///<summary>
   ///正規表現を扱うクラス
   ///</summary>
@@ -154,14 +150,7 @@ namespace Lib
       s |> Seq.exists (fun x->x.Equals i)
     let containsAll ar s=
       ar |> Seq.forall (fun x->contains x s)
-    //何か定義がおかしい
-//    let intersectby f xs ys=
-//      match xs,ys with
-//        |[],_->[] 
-//        |_,[]->[]
-//        |xs,ys-> [for i in xs ->
-//                    List.exists (f i) ys 
-//                 ]
+
     let rec generate ini cond cont cont2=
       match cond <| cont ini with
         |true -> cont ini::generate (cont2 ini) cond cont cont2
